@@ -94,6 +94,8 @@
 <a href="#section-38">附錄 B：我的網頁還有圖片或其他檔案</a>
 <a href="#section-39">如果暫時不想公開網站</a></nav></details></aside>
     <main id="guide"><article><p>適合對象：已經有簡單的 HTML 網頁，希望讓別人用網址開啟的同仁。<br>操作環境：Windows 電腦、Chrome 或 Edge、GitHub 免費帳號。<br>操作流程查核日期：2026-10-05。介面可能調整，請對照本文保留的英文按鈕名稱。</p>
+<p><strong>這份教學的公開版：</strong> <a href="https://erichuang-kcislk.github.io/my-first-page/" target="_blank" rel="noopener noreferrer">開啟 HTML 教學網站</a>。這個網址可以直接分享，手機與電腦都能閱讀。</p>
+<p><strong>實際示範儲存庫：</strong> <a href="https://github.com/erichuang-kcislk/my-first-page" target="_blank" rel="noopener noreferrer">erichuang-kcislk/my-first-page</a>。這份教學本身就是用 GitHub Pages 發布的成果；下方 GitHub 操作截圖以這個個人 Public 儲存庫為例。</p>
 <p>網頁可以用 ChatGPT、Gemini、Claude 或其他 AI 工具製作，也可以是自己寫的。<strong>只要拿到可獨立開啟的 HTML 檔案，就能照著本文操作。</strong> 後面的 Prompt 也可貼給自己習慣的 AI 工具。</p>
 <p><strong>完成後，你會有一個公開網址。別人用手機或電腦開啟，不需要登入 GitHub。</strong></p>
 <p>第一次做，只要照著 <strong>Step 1～Step 7</strong>。後面的更新方法、Prompt 和常見問題，有需要再看。</p>
@@ -437,7 +439,9 @@
 ├── index.html
 └── README.md
 </code></pre>
-<p><strong>完成後應該看到：</strong><code>index.html</code> 和 <code>README.md</code> 出現在同一層；左上方分支選單顯示 <code>main</code>。</p>
+<p><strong>完成後應該看到：</strong> <code>index.html</code> 和 <code>README.md</code> 出現在同一層；左上方分支選單顯示 <code>main</code>。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/07-%E4%B8%8A%E5%82%B3%E5%AE%8C%E6%88%90.jpg" alt="上傳完成，首頁 index.html 出現在 main 分支的最外層"></p>
+<p>圖中的 <code>index.html</code> 和 <code>README.md</code> 位在同一層；其他檔案是這份教學使用的素材。</p>
 <p>本文以 <code>main</code> 為例。如果你的儲存庫使用其他分支名稱，上傳時與下一步 Pages 設定選同一個實際名稱即可。</p>
 <p>上傳介面的按鈕位置可能調整，重點是將檔案存到 <code>main</code>。<a href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository" target="_blank" rel="noopener noreferrer">GitHub 網頁上傳檔案官方說明</a></p>
 <h2 id="section-19">Step 6：開啟 GitHub Pages</h2>
@@ -491,6 +495,10 @@
 <li>再用手機打開一次，看看文字、圖片和按鈕是否正常。</li>
 </ol>
 <p>發布可能需要最多約 10 分鐘。第一次開啟遇到 404，可以等發布完成後再試；若持續失敗，請看後面的常見問題。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener noreferrer">Pages 網站查看與等待時間官方說明</a></p>
+<p><strong>畫面對照：發布成功後會顯示 Your site is live at 與 Visit site。</strong> 按 <strong>Visit site</strong>，就會開啟實際的公開網站。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/09-%E5%8F%96%E5%BE%97%E5%85%AC%E9%96%8B%E7%B6%B2%E5%9D%80.jpg" alt="Pages 發布成功，顯示公開網址及 Visit site 按鈕"></p>
+<p>這次示範發布的是<strong>這份教學本身</strong>。你可以先 <a href="https://erichuang-kcislk.github.io/my-first-page/" target="_blank" rel="noopener noreferrer">開啟示範網站</a>，確認 GitHub Pages 的成果長什麼樣子；完成自己的發布後，該網址會顯示你的網頁內容。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/10-%E5%85%AC%E9%96%8B%E6%95%99%E5%AD%B8%E7%B6%B2%E7%AB%99.jpg" alt="GitHub Pages 已公開的 HTML 教學網站"></p>
 <h3 id="section-21">你要分享的是哪一個網址？</h3>
 <div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
 <thead>
@@ -823,8 +831,8 @@ Actions 最新發布狀態或錯誤文字：[填入；不知道就寫不知道]
 <h2 id="section-39">如果暫時不想公開網站</h2>
 <ol>
 <li>到儲存庫的 <strong>Settings → Pages</strong>。</li>
-<li>找到顯示網站網址的區塊，點旁邊的 <strong>⋯</strong> 選單。</li>
-<li>選 <strong>Unpublish site</strong>，依畫面確認取消發布。</li>
+<li>找到顯示網站網址的區塊，點旁邊的 <strong>Unpublish site</strong>。部分介面會將它放在 <strong>⋯</strong> 選單裡。</li>
+<li>依畫面確認取消發布。</li>
 </ol>
 <p>取消後，目前的網站部署會被移除。原本的發布設定仍會保留；之後更新發布來源、產生新部署時，網站可以重新公開。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/unpublishing-a-github-pages-site" target="_blank" rel="noopener noreferrer">取消發布官方說明</a></p>
 <p><strong>取消 Pages 發布後，Public 儲存庫裡的檔案仍是公開的。</strong> 如果誤放個資或憑證，請立即通知資訊人員協助處理，不要只刪除網頁上的文字就認為已處理完成。</p>
@@ -857,7 +865,9 @@ Actions 最新發布狀態或錯誤文字：[填入；不知道就寫不知道]
       button.type = 'button';
       button.className = 'copy-code';
       button.textContent = '複製這段';
-      button.setAttribute('aria-label', '複製下方完整文字或程式碼');
+      let heading = pre.previousElementSibling;
+      while (heading && !/^H[23]$/.test(heading.tagName)) heading = heading.previousElementSibling;
+      button.setAttribute('aria-label', heading ? '複製：' + heading.textContent : '複製下方完整文字或程式碼');
       button.addEventListener('click', () => copyText(code.textContent, button, '複製這段'));
       pre.prepend(button);
     });

@@ -138,7 +138,9 @@ const page = `<!DOCTYPE html>
       button.type = 'button';
       button.className = 'copy-code';
       button.textContent = '複製這段';
-      button.setAttribute('aria-label', '複製下方完整文字或程式碼');
+      let heading = pre.previousElementSibling;
+      while (heading && !/^H[23]$/.test(heading.tagName)) heading = heading.previousElementSibling;
+      button.setAttribute('aria-label', heading ? '複製：' + heading.textContent : '複製下方完整文字或程式碼');
       button.addEventListener('click', () => copyText(code.textContent, button, '複製這段'));
       pre.prepend(button);
     });

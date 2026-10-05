@@ -4,6 +4,10 @@
 操作環境：Windows 電腦、Chrome 或 Edge、GitHub 免費帳號。  
 操作流程查核日期：2026-10-05。介面可能調整，請對照本文保留的英文按鈕名稱。
 
+**這份教學的公開版：** [開啟 HTML 教學網站](https://erichuang-kcislk.github.io/my-first-page/)。這個網址可以直接分享，手機與電腦都能閱讀。
+
+**實際示範儲存庫：** [erichuang-kcislk/my-first-page](https://github.com/erichuang-kcislk/my-first-page)。這份教學本身就是用 GitHub Pages 發布的成果；下方 GitHub 操作截圖以這個個人 Public 儲存庫為例。
+
 網頁可以用 ChatGPT、Gemini、Claude 或其他 AI 工具製作，也可以是自己寫的。**只要拿到可獨立開啟的 HTML 檔案，就能照著本文操作。** 後面的 Prompt 也可貼給自己習慣的 AI 工具。
 
 **完成後，你會有一個公開網址。別人用手機或電腦開啟，不需要登入 GitHub。**
@@ -266,7 +270,11 @@ my-first-page 儲存庫
 └── README.md
 ```
 
-**完成後應該看到：**`index.html` 和 `README.md` 出現在同一層；左上方分支選單顯示 `main`。
+**完成後應該看到：** `index.html` 和 `README.md` 出現在同一層；左上方分支選單顯示 `main`。
+
+![上傳完成，首頁 index.html 出現在 main 分支的最外層](圖片/07-上傳完成.jpg)
+
+圖中的 `index.html` 和 `README.md` 位在同一層；其他檔案是這份教學使用的素材。
 
 本文以 `main` 為例。如果你的儲存庫使用其他分支名稱，上傳時與下一步 Pages 設定選同一個實際名稱即可。
 
@@ -311,6 +319,14 @@ my-first-page 儲存庫
 7. 再用手機打開一次，看看文字、圖片和按鈕是否正常。
 
 發布可能需要最多約 10 分鐘。第一次開啟遇到 404，可以等發布完成後再試；若持續失敗，請看後面的常見問題。[Pages 網站查看與等待時間官方說明](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+
+**畫面對照：發布成功後會顯示 Your site is live at 與 Visit site。** 按 **Visit site**，就會開啟實際的公開網站。
+
+![Pages 發布成功，顯示公開網址及 Visit site 按鈕](圖片/09-取得公開網址.jpg)
+
+這次示範發布的是**這份教學本身**。你可以先 [開啟示範網站](https://erichuang-kcislk.github.io/my-first-page/)，確認 GitHub Pages 的成果長什麼樣子；完成自己的發布後，該網址會顯示你的網頁內容。
+
+![GitHub Pages 已公開的 HTML 教學網站](圖片/10-公開教學網站.jpg)
 
 ### 你要分享的是哪一個網址？
 
@@ -659,8 +675,8 @@ my-first-page 儲存庫
 ## 如果暫時不想公開網站
 
 1. 到儲存庫的 **Settings → Pages**。
-2. 找到顯示網站網址的區塊，點旁邊的 **⋯** 選單。
-3. 選 **Unpublish site**，依畫面確認取消發布。
+2. 找到顯示網站網址的區塊，點旁邊的 **Unpublish site**。部分介面會將它放在 **⋯** 選單裡。
+3. 依畫面確認取消發布。
 
 取消後，目前的網站部署會被移除。原本的發布設定仍會保留；之後更新發布來源、產生新部署時，網站可以重新公開。[取消發布官方說明](https://docs.github.com/en/pages/getting-started-with-github-pages/unpublishing-a-github-pages-site)
 
