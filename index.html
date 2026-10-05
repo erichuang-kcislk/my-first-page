@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="給第一次使用 GitHub 的同仁：使用學校 Google 帳號註冊、上傳 HTML、開啟 GitHub Pages，取得公開網址。附逐步截圖與通用 AI Prompt。">
+  <meta name="description" content="已經做好 HTML 網頁？跟著 7 個步驟，用學校 Google 帳號登入 GitHub，上傳檔案並取得公開網址。附操作截圖與可複製的 AI 指令。">
   <meta name="theme-color" content="#14334a">
   <title>把 HTML 變成公開網址｜GitHub Pages 新手教學</title>
   <style>
@@ -39,6 +39,10 @@
     article > :first-child { margin-top: 0; }
     h2 { color: var(--navy); font-size: clamp(1.3rem, 3vw, 1.65rem); line-height: 1.5; margin: 48px 0 18px; padding-top: 26px; border-top: 1px solid var(--line); }
     h3 { font-size: 1.14rem; color: #25516c; margin: 30px 0 12px; line-height: 1.6; }
+    article details { margin: 18px 0; padding: 14px 18px; border: 1px solid var(--line); border-radius: 8px; background: #fbfcfd; }
+    article summary { color: #25516c; font-weight: 650; line-height: 1.6; cursor: pointer; }
+    article details[open] > summary { margin-bottom: 14px; }
+    article details > :last-child { margin-bottom: 0; }
     p { margin: 14px 0; }
     li { margin: 9px 0; }
     ol, ul { padding-left: 1.65em; }
@@ -69,773 +73,284 @@
 </head>
 <body id="top">
   <a class="skip" href="#guide">跳到教學內容</a>
-  <div class="masthead"><div class="masthead-inner"><span>GitHub 基礎班 · 新手實作</span><a href="https://github.com/erichuang-kcislk/my-first-page" target="_blank" rel="noopener noreferrer">查看本教學的儲存庫 ↗</a></div></div>
+  <div class="masthead"><div class="masthead-inner"><span>GitHub 基礎班 · 新手實作</span></div></div>
   <header class="hero"><div class="hero-inner">
     <p class="eyebrow">一份 HTML → 一個公開網址</p>
     <h1>把 HTML 變成公開網址<br>GitHub Pages 新手教學</h1>
-    <p>已經用 AI 做出網頁，想讓同仁、朋友或家長用網址開啟？跟著 7 個步驟，完成第一次公開發布。</p>
-    <p>從 GitHub 是什麼、學校 Google 帳號註冊，到上傳檔案與分享網址，每一步都有完成檢查。</p>
-    <div class="hero-actions"><a class="button" href="#section-10">開始 Step 1</a><a class="button secondary" href="#section-24">找可複製的 AI Prompt</a><button class="button secondary" type="button" id="share-guide">複製教學網址</button></div>
+    <p>跟著下面 7 個步驟，把做好的網頁分享給同仁、朋友或家長。</p>
+    <div class="hero-actions"><a class="button" href="#section-1">開始 Step 1</a><a class="button secondary" href="#section-8">需要 AI 幫忙</a><button class="button secondary" type="button" id="share-guide">複製教學網址</button></div>
   </div></header>
   <div class="layout">
-    <aside class="toc"><details open><summary>教學目錄</summary><nav aria-label="教學章節"><a href="#section-1">GitHub 是什麼？先從你的網頁需求看起</a>
-<a href="#section-8">這次要完成的流程</a>
-<a href="#section-10">Step 1：把網頁檔案命名為 index.html</a>
-<a href="#section-11">Step 2：先在自己的電腦打開看看</a>
-<a href="#section-12">Step 3：登入 GitHub</a>
-<a href="#section-17">Step 4：建立一個 Public 儲存庫</a>
-<a href="#section-18">Step 5：上傳 index.html</a>
-<a href="#section-19">Step 6：開啟 GitHub Pages</a>
-<a href="#section-20">Step 7：取得公開網址，確認別人也能開啟</a>
-<a href="#section-23">之後怎麼更新網頁？</a>
-<a href="#section-24">通用 AI Prompt：選一段直接貼</a>
-<a href="#section-33">常見問題：先看符合你的那一列</a>
-<a href="#section-34">附錄 A：把程式碼存成 HTML</a>
-<a href="#section-38">附錄 B：我的網頁還有圖片或其他檔案</a>
-<a href="#section-39">如果暫時不想公開網站</a></nav></details></aside>
-    <main id="guide"><article><p>適合對象：已經有簡單的 HTML 網頁，希望讓別人用網址開啟的同仁。<br>操作環境：Windows 電腦、Chrome 或 Edge、GitHub 免費帳號。<br>操作流程查核日期：2026-10-05。介面可能調整，請對照本文保留的英文按鈕名稱。</p>
-<p><strong>這份教學的公開版：</strong> <a href="https://erichuang-kcislk.github.io/my-first-page/" target="_blank" rel="noopener noreferrer">開啟 HTML 教學網站</a>。這個網址可以直接分享，手機與電腦都能閱讀。</p>
-<p><strong>實際示範儲存庫：</strong> <a href="https://github.com/erichuang-kcislk/my-first-page" target="_blank" rel="noopener noreferrer">erichuang-kcislk/my-first-page</a>。這份教學本身就是用 GitHub Pages 發布的成果；下方 GitHub 操作截圖以這個個人 Public 儲存庫為例。</p>
-<p>網頁可以用 ChatGPT、Gemini、Claude 或其他 AI 工具製作，也可以是自己寫的。<strong>只要拿到可獨立開啟的 HTML 檔案，就能照著本文操作。</strong> 後面的 Prompt 也可貼給自己習慣的 AI 工具。</p>
-<p><strong>完成後，你會有一個公開網址。別人用手機或電腦開啟，不需要登入 GitHub。</strong></p>
-<p>第一次做，只要照著 <strong>Step 1～Step 7</strong>。後面的更新方法、Prompt 和常見問題，有需要再看。</p>
-<h2 id="section-1">GitHub 是什麼？先從你的網頁需求看起</h2>
-<p>你已經有一份 HTML。現在需要一個地方放它，讓別人用網址打開；也需要知道自己之後改了什麼，方便持續更新。</p>
-<p>GitHub 可以幫你把專案檔案存放在網路上、保留修改紀錄，以及與其他人協作。<strong>這次會用到「儲存檔案、記錄修改、發布網頁」三件事。</strong><a href="https://docs.github.com/en/get-started/start-your-journey/what-is-github" target="_blank" rel="noopener noreferrer">GitHub 官方入門介紹</a></p>
-<h3 id="section-2">用一個活動網頁來理解</h3>
-<p>假設你做了一份「午間閱讀小聚」的活動介紹：</p>
-<div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
-<thead>
-<tr>
-<th>你想做的事</th>
-<th>在 GitHub 怎麼完成</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>把 HTML 放到網路上</td>
-<td>建立一個儲存庫，將 <code>index.html</code> 上傳進去。</td>
-</tr>
-<tr>
-<td>記住這次改了什麼</td>
-<td>存檔時寫一段修改說明，例如「更新活動時間」。</td>
-</tr>
-<tr>
-<td>讓大家直接看活動網頁</td>
-<td>開啟 GitHub Pages，取得網站網址。</td>
-</tr>
-<tr>
-<td>下次再修改活動內容</td>
-<td>在同一個儲存庫更新 <code>index.html</code>，網站會重新發布。</td>
-</tr>
-</tbody></table></div>
-<p>儲存庫除了檔案，也保留修改紀錄。你可以把每次 Commit 想成一次「存下目前版本」，日後回頭查看改動。<a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" target="_blank" rel="noopener noreferrer">GitHub 儲存庫入門</a></p>
-<h3 id="section-3">Git、GitHub、GitHub Pages 有什麼關係？</h3>
-<div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
-<thead>
-<tr>
-<th>名稱</th>
-<th>白話說明</th>
-<th>這次怎麼使用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Git</td>
-<td>記錄檔案版本與修改歷程的工具。</td>
-<td>在 GitHub 網頁存檔，就會留下版本紀錄。</td>
-</tr>
-<tr>
-<td>GitHub</td>
-<td>存放與管理專案檔案的網路平台。</td>
-<td>在瀏覽器裡建立儲存庫、上傳與修改 HTML。</td>
-</tr>
-<tr>
-<td>GitHub Pages</td>
-<td>GitHub 提供的靜態網站發布服務。</td>
-<td>將 HTML 變成可開啟的網站網址。</td>
-</tr>
-</tbody></table></div>
-<p>本教學直接使用 GitHub 網頁操作，你可以先學會上傳與發布，再依需要學習其他工具。<a href="https://docs.github.com/en/get-started/start-your-journey/what-is-github" target="_blank" rel="noopener noreferrer">GitHub 與 Git 的官方說明</a>、<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">GitHub Pages 官方介紹</a></p>
-<h3 id="section-4">帳號、儲存庫與網址怎麼看？</h3>
-<p>假設你的 GitHub 使用者名稱是 <code>teacher-demo</code>，儲存庫名稱是 <code>my-first-page</code>：</p>
-<pre><code class="language-text">GitHub 帳號：teacher-demo
-└── 儲存庫：my-first-page
-    ├── index.html  ← 你的網頁首頁
-    └── README.md   ← 這個專案的說明
-</code></pre>
-<p>上面是虛構範例。使用者名稱是帳號識別名稱，可能和你的中文姓名不同；儲存庫名稱則是這個專案的名稱。</p>
-<div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
-<thead>
-<tr>
-<th>你看到的名稱</th>
-<th>這次要記住什麼</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Owner</td>
-<td>這個儲存庫屬於哪個帳號。練習時選自己的帳號。</td>
-</tr>
-<tr>
-<td>Repository name</td>
-<td>這個專案叫什麼。本文以 <code>my-first-page</code> 為例。</td>
-</tr>
-<tr>
-<td><code>main</code></td>
-<td>本文使用的發布分支。上傳檔案與 Pages 都選同一個分支。</td>
-</tr>
-<tr>
-<td><code>/(root)</code></td>
-<td>儲存庫的最外層。<code>index.html</code> 要直接放在這裡。</td>
-</tr>
-</tbody></table></div>
-<p>例如打開儲存庫後，直接看到 <code>index.html</code>，就代表它在最外層；如果還要先點進其他資料夾才看到它，就不符合本文的 <code>/(root)</code> 設定。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener noreferrer">發布分支與資料夾官方說明</a></p>
-<h3 id="section-5">Public 到底公開什麼？</h3>
-<p><strong>選 Public 代表任何人都能查看儲存庫的檔案、原始碼與公開的修改紀錄。</strong> 別人可以閱讀或下載；直接修改原本的儲存庫則需要相應權限。你的 GitHub 登入密碼也不會因為選 Public 就公開。<a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories" target="_blank" rel="noopener noreferrer">儲存庫公開範圍與權限說明</a></p>
-<div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
-<thead>
-<tr>
-<th>內容</th>
-<th>選 Public 並發布後的情況</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>HTML 上顯示的文字與圖片</td>
-<td>訪客可以在網站看到。</td>
-</tr>
-<tr>
-<td>HTML 裡的程式碼與註解</td>
-<td>別人可以從公開檔案查看。</td>
-</tr>
-<tr>
-<td>網頁引用的公開檔案</td>
-<td>別人可以透過連結或儲存庫取得。</td>
-</tr>
-<tr>
-<td>沒有上傳的電腦檔案</td>
-<td>不會因為這個儲存庫設為 Public 就自動上傳。</td>
-</tr>
-</tbody></table></div>
-<p><strong>畫面對照：Public 和 Private 的差別。</strong> Public 是任何人都能查看；Private 則限制儲存庫的存取對象。本文的免費公開網頁練習選 Public。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/03-Public%E5%85%AC%E9%96%8B%E9%81%B8%E9%A0%85.jpg" alt="建立儲存庫時的 Public 與 Private 選項"></p>
-<p>所以要確認的是<strong>整份檔案能不能公開</strong>。把文字藏在 HTML 註解裡，或用樣式隱藏，仍可能被看到。</p>
-<h3 id="section-6">這次需要付費嗎？訪客需要帳號嗎？</h3>
-<p>本文使用 GitHub 免費帳號、Public 儲存庫與 GitHub 提供的 <code>github.io</code> 網址，適合簡單的公開靜態網頁。你不需要先購買自己的網址；訪客開啟公開網站時，也不需要登入 GitHub。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener noreferrer">Pages 使用條件</a>、<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">Pages 網址說明</a></p>
-<h3 id="section-7">進入儲存庫後，先認識這幾個按鈕</h3>
-<div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
-<thead>
-<tr>
-<th>按鈕或頁籤</th>
-<th>它是做什麼的</th>
-<th>什麼時候會用到</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>上方的 <strong>Code 分頁</strong></td>
-<td>回到這個儲存庫的檔案清單。</td>
-<td>上傳或查看 <code>index.html</code>。</td>
-</tr>
-<tr>
-<td><strong>Add file</strong></td>
-<td>新增或上傳檔案。</td>
-<td>選 <code>Upload files</code> 上傳 HTML。</td>
-</tr>
-<tr>
-<td>綠色的 <strong>Code 按鈕</strong></td>
-<td>下載或連接這個專案。</td>
-<td>本文主要使用 Add file 上傳。</td>
-</tr>
-<tr>
-<td><strong>Settings</strong></td>
-<td>調整儲存庫設定。</td>
-<td>開啟 Pages。</td>
-</tr>
-<tr>
-<td>Settings 左側的 <strong>Pages</strong></td>
-<td>設定網站發布來源、查看網站網址。</td>
-<td>選分支和資料夾、找到 Visit site。</td>
-</tr>
-<tr>
-<td><strong>Actions</strong></td>
-<td>查看網站發布工作的進度與結果。</td>
-<td>發布遲遲沒完成，或需要查錯誤時。</td>
-</tr>
-<tr>
-<td><strong>Commit changes</strong></td>
-<td>把這次變更正式存到 GitHub。</td>
-<td>上傳與修改檔案後。</td>
-</tr>
-</tbody></table></div>
-<p>等一下的實作會依序使用這些位置。看到不熟悉的頁籤，可以先回到本文這張表對照。</p>
-<h2 id="section-8">這次要完成的流程</h2>
-<pre><code class="language-text">準備 HTML 網頁 → 存成 index.html → 上傳到 GitHub → 開啟 Pages → 分享網址
-</code></pre>
-<p><strong>Public 和 Pages 都要設定：選 Public 是公開檔案；開啟 Pages 才會有本文要分享的網站網址。</strong> Public 儲存庫的內容可被任何人存取。<a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories" target="_blank" rel="noopener noreferrer">GitHub 儲存庫公開範圍說明</a></p>
-<h3 id="section-9">這個方法適合你的網頁嗎？</h3>
-<p>活動介紹、課程說明、作品展示、簡單計算器，都適合用這個方法。靜態網頁也可以有按鈕、計算或切換內容。</p>
-<p>如果網頁需要登入校內帳號、把所有人的資料集中存到資料庫，或請 AI 即時產生新回答，請先請資訊人員確認。這些功能需要額外服務，單靠本教學的 HTML 發布流程無法完成。GitHub Pages 提供的是靜態網站代管。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">GitHub Pages 官方介紹</a></p>
-<p><strong>公開前，請確認網頁與原始碼都可以公開。</strong> 練習用虛構資料；學生名單、電話、校內文件、密碼和 API Key（服務金鑰）不要放進網頁或公開儲存庫。正式校務內容先依校方流程確認可以發布。Public 儲存庫也會保留檔案修改紀錄。<a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories" target="_blank" rel="noopener noreferrer">GitHub 儲存庫說明</a></p>
-<h2 id="section-10">Step 1：把網頁檔案命名為 index.html</h2>
-<p><strong>這一步的目標：你的電腦裡有一個叫 <code>index.html</code> 的檔案。</strong></p>
-<p>如果你已經下載或拿到 HTML 檔案，照下面做。如果目前只有 AI 工具裡的網頁預覽或程式碼，先做後面的「附錄 A：把程式碼存成 HTML」，再回到 Step 2。</p>
-<ol>
-<li>在桌面按滑鼠右鍵，選「新增 → 資料夾」。</li>
-<li>把資料夾命名為 <code>my-first-page</code>。</li>
-<li>把做好的 HTML 檔案<strong>複製</strong> 到這個資料夾。</li>
-<li>在檔案總管顯示副檔名。Windows 11 可選「檢視 → 顯示 → 副檔名」；Windows 10 可在「檢視」勾選「副檔名」。</li>
-<li>選取複製過來的檔案，按 <code>F2</code>，把完整檔名改成 <code>index.html</code>。</li>
-</ol>
-<p>檔名要全部小寫。請對照：</p>
-<div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
-<thead>
-<tr>
-<th>檔名</th>
-<th>能直接照本文繼續嗎？</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>index.html</code></td>
-<td>可以。</td>
-</tr>
-<tr>
-<td><code>Index.html</code></td>
-<td>請改成小寫的 <code>index.html</code>。</td>
-</tr>
-<tr>
-<td><code>index.html.txt</code></td>
-<td>請把完整檔名改成 <code>index.html</code>。</td>
-</tr>
-<tr>
-<td><code>活動介紹.html</code></td>
-<td>請把複製過來的檔案改名為 <code>index.html</code>。</td>
-</tr>
-</tbody></table></div>
-<p>GitHub Pages 的首頁檔名會區分大小寫；本文統一使用 <code>index.html</code>。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/troubleshooting-404-errors-for-github-pages-sites" target="_blank" rel="noopener noreferrer">首頁檔名官方說明</a></p>
-<p><strong>完成後應該看到：</strong> 打開 <code>my-first-page</code> 資料夾，就看到 <code>index.html</code>。</p>
-<h2 id="section-11">Step 2：先在自己的電腦打開看看</h2>
-<p><strong>這一步的目標：確認拿到的是可顯示的網頁。</strong></p>
-<ol>
-<li>用滑鼠雙擊 <code>index.html</code>。如果沒有用瀏覽器開啟，按右鍵，選「開啟檔案」，再選 Chrome 或 Edge。</li>
-<li>看看文字、排版和圖片是否正常。</li>
-<li>點一下網頁上的按鈕或連結，確認主要功能能使用。</li>
-</ol>
-<p><strong>完成後應該看到：</strong> 瀏覽器顯示你的網頁。</p>
-<p>下面是本文「午間閱讀小聚」練習網頁的本機預覽。這張圖只代表檔案能正常顯示，還要完成後面的上傳與 Pages 設定，才會有公開網址。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/00-HTML%E6%9C%AC%E6%A9%9F%E9%A0%90%E8%A6%BD.jpg" alt="午間閱讀小聚 HTML 的本機預覽"></p>
-<p>現在網址列可能是 <code>file:///C:/.../index.html</code>。這代表它還在你的電腦裡，別人無法用這個本機網址開啟。</p>
-<p>若畫面只顯示程式碼、出現亂碼，或必須在某個 AI 工具的預覽裡才能運作，先用後面的 <strong>Prompt 1</strong> 整理檔案，再做一次 Step 2。若網頁有另外的圖片或其他檔案，請看後面的「附錄 B：我的網頁還有圖片或其他檔案」。</p>
-<h2 id="section-12">Step 3：登入 GitHub</h2>
-<p><strong>這一步的目標：可以登入 GitHub，並完成電子郵件驗證。</strong></p>
-<h3 id="section-13">建議使用學校 Google 帳號建立 GitHub 帳號</h3>
-<p><strong>本校已申請 GitHub Campus Program，建議同仁使用學校的 Google 帳號註冊或登入 GitHub，方便後續辨識校內身分與安排帳號加入校方組織。</strong> 校方組織可以想成學校在 GitHub 上共同管理專案的位置。</p>
-<p>GitHub 支援用 Google 建立個人帳號。註冊時看到 <strong>Continue with Google</strong>，就是「使用 Google 帳號繼續」的意思。<a href="https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github" target="_blank" rel="noopener noreferrer">GitHub 帳號建立官方說明</a></p>
-<h3 id="section-14">還沒有 GitHub 帳號：照這樣做</h3>
+    <aside class="toc"><details open><summary>教學目錄</summary><nav aria-label="教學章節"><a href="#section-1">Step 1：登入 GitHub</a>
+<a href="#section-2">Step 2：把檔案命名為 index.html</a>
+<a href="#section-3">Step 3：先在自己的電腦打開看看</a>
+<a href="#section-4">Step 4：建立專案，放網頁檔案</a>
+<a href="#section-5">Step 5：上傳 index.html</a>
+<a href="#section-6">Step 6：開啟網頁發布功能</a>
+<a href="#section-7">Step 7：取得網址，分享給別人</a>
+<a href="#section-8">需要 AI 幫忙時，複製這些指令</a>
+<a href="#section-9">之後要更新，或操作遇到問題時</a></nav></details></aside>
+    <main id="guide"><article><p>已經做好網頁了嗎？照下面 7 個步驟，就能取得一個可以分享的網址，別人不用登入也能看。</p>
+<p>準備好你的 HTML 檔案和學校 Google 帳號，從 Step 1 開始。</p>
+<h2 id="section-1">Step 1：登入 GitHub</h2>
+<p>GitHub 是存放網頁檔案的平台。這次會用它的 GitHub Pages 功能，把你的網頁公開到網路上。</p>
+<p>本校已申請 GitHub Campus Program，建議使用學校 Google 帳號。日後需要數位發展中心協助調整網頁或安排共同管理時，方便確認你的帳號。</p>
+<p>還沒有 GitHub 帳號，照這樣做：</p>
 <ol>
 <li>打開 <a href="https://github.com/signup" target="_blank" rel="noopener noreferrer">GitHub 註冊頁</a>。</li>
-<li>找到並按 <strong>Continue with Google</strong>。</li>
-<li>在 Google 的帳號選擇畫面，選<strong>自己的學校 Google 帳號</strong>。如果同時有私人帳號，請核對選到的是學校帳號。</li>
-<li>依畫面指示完成登入與註冊；密碼、驗證碼和授權畫面請自己處理。</li>
-<li>如果 GitHub 要你設定使用者名稱，選一個容易辨認的名稱，並記下來。</li>
-<li>依指示完成電子郵件或其他必要驗證，再回到 GitHub。</li>
+<li>按 <strong>Continue with Google</strong>，選擇自己的學校 Google 帳號。</li>
+<li>依畫面完成註冊。需要填使用者名稱時，取一個容易記住的名稱。</li>
+<li>如果收到驗證信，打開信件，依指示完成驗證。</li>
 </ol>
-<p><strong>Google 帳號和 GitHub 使用者名稱可能不同。</strong> 例如你用學校電子郵件登入，GitHub 使用者名稱仍可能是另一個英文名稱；後面建立儲存庫與查看網址時，要看 GitHub 顯示的名稱。</p>
-<h3 id="section-15">已經有 GitHub 帳號：先登入原本的帳號</h3>
-<p>到 <a href="https://github.com/login" target="_blank" rel="noopener noreferrer">GitHub 登入頁</a>，使用原本的登入方式。原本透過 Google 建立或已連接 Google 登入的帳號，可按 <strong>Continue with Google</strong>，選當初使用的 Google 帳號。</p>
-<p>如果已經有 GitHub 帳號，先沿用它；需要連結學校身分或加入校方組織時，依資訊單位安排處理。</p>
-<p><strong>畫面對照：Continue with Google 與建立帳號入口。</strong> 同仁優先使用學校 Google 帳號；圖中的 <code>teacher-demo</code> 與密碼欄都是虛構示範。使用 Google 方式時，直接按 <strong>Continue with Google</strong>。若從登入頁開始，<strong>Create an account</strong> 可以帶你到註冊頁。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/02-%E5%BB%BA%E7%AB%8B%E5%B8%B3%E8%99%9F%E5%85%A5%E5%8F%A3.jpg" alt="GitHub 登入頁的 Continue with Google 與 Create an account"></p>
-<h3 id="section-16">GitHub Campus Program 和帳號有什麼關係？</h3>
-<p>GitHub Campus Program 是提供學校使用 GitHub 的機構方案，包含符合方案條件的 GitHub Enterprise 服務。<strong>同仁先有自己的 GitHub 帳號，再由校方依啟用方式安排組織成員與使用權限。</strong> 實際可用功能與加入方式，以資訊單位的通知為準。<a href="https://docs.github.com/en/education/about-github-education/use-github-at-your-educational-institution/about-github-campus-program" target="_blank" rel="noopener noreferrer">GitHub Campus Program 官方說明</a></p>
+<p>已經有帳號的人，直接到 <a href="https://github.com/login" target="_blank" rel="noopener noreferrer">GitHub 登入頁</a>，用原本的方式登入，不必再建立一個。</p>
+<p>下圖的 <strong>Continue with Google</strong> 就是 Google 登入入口。圖中的帳號與密碼是虛構範例。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/02-%E5%BB%BA%E7%AB%8B%E5%B8%B3%E8%99%9F%E5%85%A5%E5%8F%A3.jpg" alt="GitHub 登入頁：Continue with Google 與 Create an account"></p>
+<p>登入後，右上角會出現自己的帳號選單，就可以繼續了。</p>
+<h2 id="section-2">Step 2：把檔案命名為 index.html</h2>
+<ol>
+<li>在桌面建立一個資料夾，命名為 <code>my-first-page</code>。</li>
+<li>把做好的 HTML 檔案複製到這個資料夾。</li>
+<li>在檔案總管開啟「檢視」，勾選「副檔名」。Windows 11 要先點「顯示」。</li>
+<li>選取 HTML 檔案，按 <code>F2</code>，把完整檔名改成 <code>index.html</code>。</li>
+</ol>
+<p>檔名全部用小寫，確認最後沒有多出 <code>.txt</code>。</p>
+<details>
+<summary>只有 AI 提供的程式碼，還沒有檔案？點這裡</summary>
+
+<p>先用後面的 <a href="#ai-prepare">「取得完整 HTML」指令</a>，請 AI 給你完整的網頁程式碼，再照下面存檔：</p>
+<ol>
+<li>開啟 Windows 的「記事本」。</li>
+<li>貼上完整 HTML 程式碼。不要把 AI 的說明文字或程式碼框標記一起貼進去。</li>
+<li>點「檔案 → 另存新檔」，儲存位置選桌面的 <code>my-first-page</code> 資料夾。</li>
+<li>檔案名稱填 <code>index.html</code>。</li>
+<li>存檔類型選「所有檔案」，編碼選 <code>UTF-8</code>。</li>
+<li>按「儲存」，回到資料夾確認檔名。</li>
+</ol>
+</details>
+
+<p>做到這裡，打開 <code>my-first-page</code> 資料夾，應該看得到 <code>index.html</code>。</p>
+<h2 id="section-3">Step 3：先在自己的電腦打開看看</h2>
+<ol>
+<li>用滑鼠連按兩下 <code>index.html</code>。</li>
+<li>如果沒有用瀏覽器開啟，按右鍵，選「開啟檔案」，再選 Chrome 或 Edge。</li>
+<li>看看文字、圖片和排版是否正常；有按鈕的話，也點一下試試看。</li>
+</ol>
+<p>下面是練習網頁的畫面，你會看到自己做的內容。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/00-HTML%E6%9C%AC%E6%A9%9F%E9%A0%90%E8%A6%BD.jpg" alt="HTML 檔案在電腦上開啟的練習畫面"></p>
+<p>確認網頁正常再繼續。目前的檔案還在自己的電腦裡，下一步才會上傳到網路。</p>
+<h2 id="section-4">Step 4：建立專案，放網頁檔案</h2>
+<p>一個網站用一個專案來存放檔案。GitHub 畫面上寫的 Repository，就是這裡的專案。</p>
+<ol>
+<li>打開 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">建立專案的頁面</a>。</li>
+<li><strong>Owner</strong> 選自己的帳號。圖片裡是示範帳號，請用你自己的。</li>
+<li><strong>Repository name（專案名稱）</strong> 填 <code>my-first-page</code>。這個欄位要用英文。</li>
+<li><strong>Description（專案說明）</strong> 填中文名稱「教學－我的第一個網頁」。</li>
+<li><strong>Visibility</strong> 選 <strong>Public</strong>。</li>
+<li>開啟或勾選 <strong>Add README</strong>，其他欄位先維持原樣。</li>
+<li>按 <strong>Create repository</strong>。</li>
+</ol>
+<details>
+<summary>專案怎麼命名？看簡單範例</summary>
+
+<p>中文名稱用「用途－主題」，讓自己和協助的同仁一眼就知道這個專案是做什麼的。</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
 <thead>
 <tr>
-<th>這件事</th>
-<th>它代表什麼</th>
+<th>中文名稱，填在 Description</th>
+<th>英文名稱，填在 Repository name</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>用學校 Google 帳號註冊 GitHub</td>
-<td>建立自己的 GitHub 帳號，方便校內身分辨識。</td>
+<td>教學－我的第一個網頁</td>
+<td><code>my-first-page</code></td>
 </tr>
 <tr>
-<td>加入校方指定的 GitHub 組織</td>
-<td>取得校方安排的共同專案存取權限。</td>
+<td>活動－午間閱讀小聚</td>
+<td><code>activity-reading</code></td>
 </tr>
 <tr>
-<td>GitHub Campus Program</td>
-<td>由校方申請、依校方啟用與管理方式使用的機構方案。</td>
-</tr>
-<tr>
-<td>個人的 GitHub Education 優惠</td>
-<td>依個別方案資格另行申請與驗證。</td>
+<td>課程－英文練習</td>
+<td><code>course-english</code></td>
 </tr>
 </tbody></table></div>
-<p>本次練習先在<strong>自己的個人帳號</strong> 建立儲存庫即可。之後要放入校方共用組織時，再依資訊單位安排操作。</p>
-<p><strong>用學校 Google 帳號登入，並不代表所有個人教育優惠都會自動開通。</strong> 例如個人的 Copilot 教育優惠等，依 GitHub 的申請資格與驗證結果辦理。<a href="https://github.com/education/schools" target="_blank" rel="noopener noreferrer">GitHub 學校方案與個人優惠說明</a></p>
-<p><strong>完成後應該看到：</strong> 登入後的 GitHub 畫面，右上角可以開啟自己的帳號選單。使用者名稱可以在個人頁面的網址中找到，例如 <code>github.com/你的帳號</code>。</p>
-<p>註冊細節與驗證方式以當下畫面為準。GitHub 的部分基本操作需要已驗證的電子郵件。<a href="https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github" target="_blank" rel="noopener noreferrer">GitHub 帳號註冊官方說明</a></p>
-<h2 id="section-17">Step 4：建立一個 Public 儲存庫</h2>
-<p><strong>這一步的目標：在 GitHub 建立網站的檔案位置。</strong></p>
+<p>英文名稱用小寫，單字之間加半形短橫線 <code>-</code>，不加空格。GitHub 的這個欄位只接受英文字母、數字及 <code>.</code>、<code>-</code>、<code>_</code>，中文請填在 Description。</p>
+</details>
+
+<p>Public 表示上傳的檔案誰都看得到。請不要上傳學生個資、校內文件或密碼。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/04-%E5%BB%BA%E7%AB%8B%E5%84%B2%E5%AD%98%E5%BA%AB.jpg" alt="建立專案：填名稱、選 Public、開啟 Add README"></p>
+<p>圖片裡的專案說明留白；你可以在 Description 補上自己的中文名稱。</p>
+<p>如果名稱已被使用，可以改成 <code>my-first-page-2</code>。</p>
+<p>完成後會進入專案頁面，檔案清單裡有 <code>README.md</code>，先保留它就好。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/04-1-%E5%84%B2%E5%AD%98%E5%BA%AB%E5%BB%BA%E7%AB%8B%E5%AE%8C%E6%88%90.jpg" alt="專案建立完成，檔案清單顯示 README.md"></p>
+<h2 id="section-5">Step 5：上傳 index.html</h2>
 <ol>
-<li>登入後，打開 <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">建立新儲存庫</a>。</li>
-<li>按照下表填寫。</li>
-<li>按 <strong>Create repository</strong>。</li>
+<li>在剛建立的專案，點上方的 <strong>Code</strong>。</li>
+<li>點 <strong>Add file → Upload files</strong>。</li>
+</ol>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/05-%E4%B8%8A%E5%82%B3%E6%AA%94%E6%A1%88%E5%85%A5%E5%8F%A3.jpg" alt="在檔案清單點 Add file，再選 Upload files"></p>
+<ol start="3">
+<li>點 <strong>choose your files</strong>，選桌面 <code>my-first-page</code> 資料夾裡的 <code>index.html</code>。</li>
+<li>確認畫面已列出 <code>index.html</code>，在下方說明欄輸入「上傳第一版網頁」。</li>
+<li>如果畫面詢問存到哪裡，選 <strong>Commit directly to the main branch</strong>。</li>
+<li>按 <strong>Commit changes</strong>，把檔案存到 GitHub。</li>
+</ol>
+<p>下圖是上傳畫面。選好檔案後，再按 <strong>Commit changes</strong>。圖中尚未選檔，請先完成第 3 步。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/06-%E9%81%B8%E6%93%87%E6%AA%94%E6%A1%88%E8%88%87%E5%AD%98%E6%AA%94.jpg" alt="上傳畫面的 choose your files 與 Commit changes"></p>
+<p>請選 <code>index.html</code> 檔案本身，不要上傳外面那層資料夾或 ZIP 壓縮檔。</p>
+<p>回到檔案清單，確認 <code>index.html</code> 和 <code>README.md</code> 在同一層。下圖只要找這兩個檔案，其他是示範網站的教材。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/07-%E4%B8%8A%E5%82%B3%E5%AE%8C%E6%88%90.jpg" alt="上傳後，index.html 和 README.md 在同一層"></p>
+<h2 id="section-6">Step 6：開啟網頁發布功能</h2>
+<ol>
+<li>點專案上方的 <strong>Settings</strong>。</li>
+<li>點左側的 <strong>Pages</strong>。</li>
+<li>找到 <strong>Build and deployment</strong>，照下表選好設定。</li>
+<li>按 <strong>Save</strong>。</li>
 </ol>
 <div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
 <thead>
 <tr>
 <th>畫面欄位</th>
-<th>這次怎麼填</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Owner，擁有者</td>
-<td>選自己的帳號。</td>
-</tr>
-<tr>
-<td>Repository name，儲存庫名稱</td>
-<td><code>my-first-page</code></td>
-</tr>
-<tr>
-<td>Description，說明</td>
-<td>可不填。</td>
-</tr>
-<tr>
-<td>Visibility／Choose visibility，公開範圍</td>
-<td>選 <strong>Public</strong>。</td>
-</tr>
-<tr>
-<td>Add README／Add a README file</td>
-<td>開啟或勾選，讓儲存庫先有一個初始檔案。</td>
-</tr>
-<tr>
-<td>其他選項</td>
-<td>先維持預設。</td>
-</tr>
-</tbody></table></div>
-<p><strong>畫面對照：確認 Owner、Repository name、Public 與 Add README。</strong> 圖中的 <code>erichuang-kcislk</code> 是示範帳號，請換成自己的帳號。最後按右下方的 <strong>Create repository</strong>。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/04-%E5%BB%BA%E7%AB%8B%E5%84%B2%E5%AD%98%E5%BA%AB.jpg" alt="建立儲存庫，填寫 my-first-page、選 Public，並開啟 Add README"></p>
-<p>如果出現名稱已被使用，換成 <code>my-first-page-2</code>。之後的網址也要使用你實際填寫的名稱。</p>
-<p><strong>完成後應該看到：</strong> 自己的儲存庫頁面，標示 <strong>Public</strong>，檔案清單裡有 <code>README.md</code>。它只是初始說明檔，保留即可。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/04-1-%E5%84%B2%E5%AD%98%E5%BA%AB%E5%BB%BA%E7%AB%8B%E5%AE%8C%E6%88%90.jpg" alt="儲存庫建立完成，顯示 Public、main 與 README.md"></p>
-<p>GitHub 免費帳號使用 Pages 時，儲存庫需要設為 Public。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener noreferrer">建立 Pages 網站官方說明</a></p>
-<h2 id="section-18">Step 5：上傳 index.html</h2>
-<p><strong>這一步的目標：讓 <code>index.html</code> 出現在儲存庫最外層。</strong></p>
-<ol>
-<li>在剛建立的儲存庫，點上方的 <strong>Code</strong>，回到檔案清單。</li>
-<li>點 <strong>Add file → Upload files</strong>。</li>
-<li>點 <strong>choose your files</strong>。</li>
-<li>從電腦的 <code>my-first-page</code> 資料夾選取 <strong>index.html 這個檔案</strong>。</li>
-<li>在下方的修改說明欄，輸入 <code>上傳第一版網頁</code>。</li>
-<li>如果畫面詢問要存到哪裡，選 <strong>Commit directly to the main branch</strong>，直接存到 <code>main</code>。</li>
-<li>按 <strong>Commit changes</strong>，完成儲存。</li>
-</ol>
-<p>本教學使用自己新建的練習儲存庫，直接存到 <code>main</code>。如果在單位既有儲存庫操作，請依該儲存庫的協作規則處理。</p>
-<p><strong>畫面對照：Code 分頁右側的 Add file → Upload files。</strong> 請確認目前開啟的是自己剛建立的 Public 練習儲存庫。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/05-%E4%B8%8A%E5%82%B3%E6%AA%94%E6%A1%88%E5%85%A5%E5%8F%A3.jpg" alt="GitHub 檔案清單中的 Add file 與 Upload files 選單"></p>
-<p><strong>畫面對照：選檔、填修改說明、存到 main。</strong> 上方的 <strong>choose your files</strong> 用來選檔；下方第一個文字欄填 <code>上傳第一版網頁</code>，確認 <strong>Commit directly to the main branch</strong>，再按 <strong>Commit changes</strong>。圖中尚未選檔；實際操作時，先確認畫面已列出待上傳的 <code>index.html</code>。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/06-%E9%81%B8%E6%93%87%E6%AA%94%E6%A1%88%E8%88%87%E5%AD%98%E6%AA%94.jpg" alt="上傳表單中的 choose your files、修改說明與 Commit changes"></p>
-<p><strong>請上傳檔案本身。</strong> 不要把外面那層 <code>my-first-page</code> 資料夾或 ZIP 壓縮檔當成首頁上傳。</p>
-<p>完成後，儲存庫最外層應該長這樣：</p>
-<pre><code class="language-text">my-first-page 儲存庫
-├── index.html
-└── README.md
-</code></pre>
-<p><strong>完成後應該看到：</strong> <code>index.html</code> 和 <code>README.md</code> 出現在同一層；左上方分支選單顯示 <code>main</code>。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/07-%E4%B8%8A%E5%82%B3%E5%AE%8C%E6%88%90.jpg" alt="上傳完成，首頁 index.html 出現在 main 分支的最外層"></p>
-<p>圖中的 <code>index.html</code> 和 <code>README.md</code> 位在同一層；其他檔案是這份教學使用的素材。</p>
-<p>本文以 <code>main</code> 為例。如果你的儲存庫使用其他分支名稱，上傳時與下一步 Pages 設定選同一個實際名稱即可。</p>
-<p>上傳介面的按鈕位置可能調整，重點是將檔案存到 <code>main</code>。<a href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository" target="_blank" rel="noopener noreferrer">GitHub 網頁上傳檔案官方說明</a></p>
-<h2 id="section-19">Step 6：開啟 GitHub Pages</h2>
-<p><strong>這一步的目標：請 GitHub 把這份 HTML 發布成網站。</strong></p>
-<ol>
-<li>在儲存庫上方，點 <strong>Settings</strong>。如果沒看到，先找頁籤旁的更多選單。</li>
-<li>在左側選單，點 <strong>Pages</strong>。</li>
-<li>找到 <strong>Build and deployment</strong> 區塊。</li>
-<li>在 <strong>Source</strong> 選 <strong>Deploy from a branch</strong>。</li>
-<li>在 <strong>Branch</strong> 選 <strong>main</strong>。</li>
-<li>在旁邊的資料夾選單選 <strong>/(root)</strong>。</li>
-<li>按 <strong>Save</strong>。</li>
-</ol>
-<p>設定完成時，請對照這三個值：</p>
-<div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
-<thead>
-<tr>
-<th>設定</th>
 <th>要選的值</th>
-<th>白話意思</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>Source</td>
 <td><code>Deploy from a branch</code></td>
-<td>用儲存庫裡的檔案發布。</td>
 </tr>
 <tr>
 <td>Branch</td>
 <td><code>main</code></td>
-<td>使用我們剛剛存檔的位置。</td>
 </tr>
 <tr>
-<td>Folder</td>
+<td>旁邊的資料夾選單</td>
 <td><code>/(root)</code></td>
-<td>使用儲存庫最外層的檔案。</td>
 </tr>
 </tbody></table></div>
-<p><strong>畫面對照：上方 Settings → 左側 Pages → 右側發布設定。</strong> 圖中選好了 <code>Deploy from a branch</code>、<code>main</code> 和 <code>/(root)</code>；最後按 <strong>Save</strong>。這次只需要設定上方的 <strong>Build and deployment</strong> 區塊。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/08-Pages%E7%99%BC%E5%B8%83%E8%A8%AD%E5%AE%9A.jpg" alt="Pages 設定的 Deploy from a branch、main 與 root 欄位"></p>
-<p><strong>完成後應該看到：</strong> 設定已儲存，Branch 顯示 <code>main</code>，資料夾顯示 <code>/(root)</code>。GitHub 接著會處理發布。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener noreferrer">Pages 發布設定官方說明</a></p>
-<h2 id="section-20">Step 7：取得公開網址，確認別人也能開啟</h2>
-<p><strong>這一步的目標：拿到可分享的網址，並確認網站真的公開了。</strong></p>
+<p>這一步照著選就好。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/08-Pages%E7%99%BC%E5%B8%83%E8%A8%AD%E5%AE%9A.jpg" alt="Pages 設定：Deploy from a branch、main、root，再按 Save"></p>
+<p>按完 Save，先留在這個頁面，等網站發布。</p>
+<h2 id="section-7">Step 7：取得網址，分享給別人</h2>
 <ol>
-<li>儲存 Pages 設定後，先等幾分鐘。</li>
-<li>重新整理 <strong>Settings → Pages</strong> 頁面。</li>
-<li>找到 <strong>Visit site</strong> 或顯示的網站網址。</li>
-<li>點 <strong>Visit site</strong>，確認是你的網頁。</li>
-<li>複製瀏覽器網址列的網址。</li>
-<li>開一個無痕／InPrivate 視窗，貼上網址，確認沒有登入 GitHub 也能看。</li>
-<li>再用手機打開一次，看看文字、圖片和按鈕是否正常。</li>
+<li>等幾分鐘，再重新整理 <strong>Settings → Pages</strong> 頁面。</li>
+<li>看到 <strong>Your site is live at</strong> 或 <strong>Visit site</strong> 後，點 <strong>Visit site</strong>。</li>
+<li>確認開啟的是你的網頁，複製瀏覽器網址列的網址。</li>
+<li>開一個無痕視窗，貼上網址，確認不用登入也能看。再用手機打開一次。</li>
 </ol>
-<p>發布可能需要最多約 10 分鐘。第一次開啟遇到 404，可以等發布完成後再試；若持續失敗，請看後面的常見問題。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener noreferrer">Pages 網站查看與等待時間官方說明</a></p>
-<p><strong>畫面對照：發布成功後會顯示 Your site is live at 與 Visit site。</strong> 按 <strong>Visit site</strong>，就會開啟實際的公開網站。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/09-%E5%8F%96%E5%BE%97%E5%85%AC%E9%96%8B%E7%B6%B2%E5%9D%80.jpg" alt="Pages 發布成功，顯示公開網址及 Visit site 按鈕"></p>
-<p>這次示範發布的是<strong>這份教學本身</strong>。你可以先 <a href="https://erichuang-kcislk.github.io/my-first-page/" target="_blank" rel="noopener noreferrer">開啟示範網站</a>，確認 GitHub Pages 的成果長什麼樣子；完成自己的發布後，該網址會顯示你的網頁內容。</p>
-<p><img loading="lazy" src="%E5%9C%96%E7%89%87/10-%E5%85%AC%E9%96%8B%E6%95%99%E5%AD%B8%E7%B6%B2%E7%AB%99.jpg" alt="GitHub Pages 已公開的 HTML 教學網站"></p>
-<h3 id="section-21">你要分享的是哪一個網址？</h3>
+<p>第一次發布可能需要約 10 分鐘。如果暫時顯示 404，可以等一下再試。</p>
+<p><img loading="lazy" src="%E5%9C%96%E7%89%87/09-%E5%8F%96%E5%BE%97%E5%85%AC%E9%96%8B%E7%B6%B2%E5%9D%80.jpg" alt="發布完成後，點 Visit site 開啟公開網站"></p>
+<p>分享 <strong>Visit site 開啟的網址</strong>，裡面會有 <code>github.io</code>。這就是別人看網頁用的網址。</p>
+<p>這份教學也是用同樣的方法公開的：<a href="https://erichuang-kcislk.github.io/my-first-page/" target="_blank" rel="noopener noreferrer">開啟教學網站</a>。</p>
+<p>確認文字、圖片和主要按鈕都正常，就可以把你的網址分享出去。</p>
+<h2 id="section-8">需要 AI 幫忙時，複製這些指令</h2>
+<p>選需要的一段展開，貼到你習慣的 AI 工具。若要接著修改原本的作品，回到製作網頁時的那段對話最方便。</p>
+<details id="ai-prepare">
+<summary>1. 取得完整 HTML</summary>
+
+<p>只有網頁預覽，或不確定拿到的檔案能不能上傳時，可以用這段：</p>
+<pre><code class="language-text">請把目前的網頁整理成可以上傳到 GitHub Pages 的單一 index.html。
+保留原本內容，使用繁體中文，讓手機也能閱讀。
+請提供完整 HTML 程式碼，不要只給修改片段或預覽連結。
+如果有需要登入或其他服務才能使用的功能，請先用白話告訴我限制，再讓我決定怎麼調整。
+也請幫這個專案取一個「用途－主題」的中文名稱，以及適合填在 GitHub 的簡短英文名稱。
+</code></pre>
+<p>拿到程式碼後，回到 Step 2 存成檔案，再開啟檢查。</p>
+</details>
+
+<details id="ai-next">
+<summary>2. 操作卡住，請 AI 教下一步</summary>
+
+<p>先把方括號裡的內容換成你的情況，再貼給 AI：</p>
+<pre><code class="language-text">我正在照教學，把 HTML 上傳到 GitHub Pages。
+目前做到 Step [填步驟編號]。
+我看到的畫面或錯誤是：[填畫面上的文字，也可附上已遮住個資的截圖]。
+我沒有程式背景，請用繁體中文，一次只教我一個動作。
+告訴我按哪裡、按完會看到什麼，等我完成再教下一步。
+請用 GitHub 網頁操作，不要要求我安裝工具或輸入程式指令。
+</code></pre>
+</details>
+
+<details id="ai-edit">
+<summary>3. 修改網頁內容</summary>
+
+<pre><code class="language-text">請幫我修改這個網頁：[填想改的內容]。
+保留其他內容和原本可用的功能，使用繁體中文，讓手機也能閱讀。
+請給我完整新版 index.html，不要只給修改片段。
+以下是目前的 HTML：
+[貼上目前的完整 HTML 程式碼]
+</code></pre>
+<p>改好後，先在電腦打開確認，再依下方的方法更新。</p>
+</details>
+
+<h2 id="section-9">之後要更新，或操作遇到問題時</h2>
+<details>
+<summary>之後怎麼更新網頁？</summary>
+
+<p>沿用原本的專案，網站網址就可以繼續使用。</p>
+<ol>
+<li>開啟專案，點 <code>index.html</code>。</li>
+<li>點右上方的鉛筆圖示。</li>
+<li>點程式碼編輯區，按 <code>Ctrl + A</code>，貼上完整新版 HTML。</li>
+<li>點 <strong>Commit changes</strong>，輸入「更新網頁內容」。</li>
+<li>選 <strong>Commit directly to the main branch</strong>，再按 <strong>Commit changes</strong>。</li>
+<li>等幾分鐘，重新打開原本的公開網址，確認內容已更新。</li>
+</ol>
+<p>只貼 HTML 程式碼，不要把 AI 的說明文字一起貼進去。</p>
+</details>
+
+<details>
+<summary>畫面跟教學不同，或網址打不開？</summary>
+
 <div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
 <thead>
 <tr>
-<th>網址樣子</th>
-<th>用途</th>
+<th>遇到的情況</th>
+<th>先這樣做</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>https://github.com/你的帳號/my-first-page</code></td>
-<td>管理檔案、修改設定用的儲存庫頁面。</td>
+<td>找不到 Settings</td>
+<td>確認是在自己建立的專案；也可以找上方的「⋯」選單。</td>
 </tr>
 <tr>
-<td><code>https://你的帳號.github.io/my-first-page/</code></td>
-<td><strong>讓別人看網站，要分享這個。</strong></td>
+<td>Pages 裡找不到 main</td>
+<td>先完成 Step 5，上傳 <code>index.html</code>。</td>
+</tr>
+<tr>
+<td>網址顯示 404</td>
+<td>等發布完成，再確認有小寫的 <code>index.html</code>，Pages 設定是 <code>main</code> 與 <code>/(root)</code>。</td>
+</tr>
+<tr>
+<td>網頁有開，但圖片不見了</td>
+<td>圖片可能沒有一起上傳。請 AI 整理檔案，或請數位發展中心協助。</td>
+</tr>
+<tr>
+<td>改完還是舊畫面</td>
+<td>等幾分鐘，再用無痕視窗開啟。</td>
 </tr>
 </tbody></table></div>
-<p>上面是網址格式範例，不能原樣使用。<strong>直接複製 Visit site 開啟的實際網址最方便。</strong> 本教學建立的是專案網站，網址包含儲存庫名稱。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">GitHub Pages 網址官方說明</a></p>
-<h3 id="section-22">分享前，勾完這四項</h3>
+<p>還是卡住的話，記下做到哪一步、畫面上的文字和網站網址，交給數位發展中心協助。截圖前先遮住個資，密碼與驗證碼不用提供。</p>
+</details>
+
+<details>
+<summary>不小心放了不該公開的內容？</summary>
+
+<p>請立即聯絡數位發展中心。若要先暫停網站，到 <strong>Settings → Pages</strong>，點 <strong>Unpublish site</strong>；部分介面會放在「⋯」選單裡。</p>
+<p>暫停網站後，Public 專案裡的檔案仍是公開的，需要一併處理。</p>
+</details>
+
+<details>
+<summary>參考來源與示範專案</summary>
+
 <ul>
-<li><input disabled="" type="checkbox"> 公開網址顯示我的網頁。</li>
-<li><input disabled="" type="checkbox"> 無痕／InPrivate 視窗不登入也能開啟。</li>
-<li><input disabled="" type="checkbox"> 手機上的文字、圖片、主要按鈕都正常。</li>
-<li><input disabled="" type="checkbox"> 網頁與原始碼內容都已確認可以公開。</li>
+<li><a href="https://github.com/erichuang-kcislk/my-first-page" target="_blank" rel="noopener noreferrer">這份教學的示範專案</a></li>
+<li><a href="https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github" target="_blank" rel="noopener noreferrer">GitHub 官方：建立帳號</a></li>
+<li><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository" target="_blank" rel="noopener noreferrer">GitHub 官方：建立專案與命名限制</a></li>
+<li><a href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository" target="_blank" rel="noopener noreferrer">GitHub 官方：上傳檔案</a></li>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener noreferrer">GitHub 官方：設定 Pages</a></li>
+<li><a href="https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files" target="_blank" rel="noopener noreferrer">GitHub 官方：修改檔案</a></li>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/unpublishing-a-github-pages-site" target="_blank" rel="noopener noreferrer">GitHub 官方：暫停網站發布</a></li>
 </ul>
-<p><strong>這四項完成，就可以分享網站網址。</strong></p>
-<h2 id="section-23">之後怎麼更新網頁？</h2>
-<p>請沿用原本的儲存庫。保留帳號、儲存庫名稱和 <code>index.html</code> 檔名，網站網址就可以沿用。</p>
-<p>自行修改或請 AI 改好內容後，先把新版存到電腦、打開確認，再更新 GitHub：</p>
-<ol>
-<li>開啟原本的儲存庫，點 <strong>Code</strong>。</li>
-<li>點 <strong>index.html</strong>。</li>
-<li>點右上方的<strong>鉛筆圖示</strong>，進入編輯畫面。</li>
-<li>點程式碼編輯區，按 <code>Ctrl + A</code> 選取內容，再貼上<strong>完整新版 HTML</strong>。</li>
-<li>點 <strong>Commit changes</strong>。</li>
-<li>輸入這次修改的說明，例如 <code>更新活動介紹</code>。</li>
-<li>選直接存到 <code>main</code>，再按 <strong>Commit changes</strong>。</li>
-<li>等發布完成後，打開原本的公開網址，確認新內容。</li>
-</ol>
-<p>只複製 HTML 程式碼；程式碼框外面的說明文字和三個反引號不要貼進去。GitHub 可直接編輯檔案；發布來源更新後，Pages 會重新發布。<a href="https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files" target="_blank" rel="noopener noreferrer">檔案編輯官方說明</a>、<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener noreferrer">Pages 自動更新說明</a></p>
-<p>如果仍看到舊畫面，先確認發布完成，再按 <code>Ctrl + F5</code> 重新載入，或用無痕視窗開啟。電腦裡的新版檔案也要保留，方便下次修改。</p>
-<h2 id="section-24">通用 AI Prompt：選一段直接貼</h2>
-<p>Prompt 就是「給 AI 的指令」。把下面的指令貼給自己習慣的 AI 工具，先替換方括號裡的內容，一次使用一段。原本用 AI 做網頁的人，優先回到同一段對話，讓它參考原作品；如果換了工具或開新對話，請一併貼上目前的 HTML 程式碼。</p>
-<p>本文採用文字對話與複製程式碼。若使用的 AI 工具暫時無法回覆，或遇到使用額度限制，可先用附錄 A 的小範例練習 GitHub 操作。</p>
-<h3 id="section-25">Prompt 1：把現有作品整理成一個可發布的 HTML</h3>
-<p><strong>什麼時候用：</strong> 只有 AI 工具裡的網頁預覽、拿到多個程式檔，或不確定能不能放到 GitHub Pages。</p>
-<pre><code class="language-text">請幫我把目前這個網頁整理成可以放到 GitHub Pages 的版本。
-我是完全沒有程式背景的新手，請用繁體中文與白話說明。
-
-請先檢查目前網頁是否依賴特定 AI 平台的專用功能、登入、資料庫、API Key 或其他服務。
-如果有無法靠單一靜態 HTML 完成的功能，先用白話告訴我限制，讓我確認調整方式。
-其餘可保留的文字、排版和瀏覽器內互動，請盡量保留。
-
-完成版本請符合：
-1. 只有一個 index.html，樣式與互動程式都寫在同一個檔案。
-2. 不需要安裝工具、執行 npm、編譯或啟動伺服器。
-3. 不依賴外部程式套件、特定 AI 平台的專用功能或電腦裡的檔案路徑。
-4. 使用繁體中文、UTF-8，手機也能正常顯示。
-5. 若有無法一起提供的圖片，請標出並提出簡單的替代方式，不要假裝已附上圖片。
-6. 在一般回覆中給我完整 HTML 程式碼，從 &lt;!DOCTYPE html&gt; 到 &lt;/html&gt;，不要省略，也不要只給修改片段。
-
-如果你看不到原作品，請先告訴我要補上哪些程式碼，不要自行猜測內容。
-</code></pre>
-<p><strong>拿到回答後：</strong> 依附錄 A 存成檔案，雙擊開啟，確認文字與主要功能都有保留。AI 說可以發布，仍要實際打開檢查。</p>
-<h3 id="section-26">Prompt 2：還沒有作品，先做一個練習網頁</h3>
-<p><strong>什麼時候用：</strong> 希望先用虛構內容走完整個發布流程。</p>
-<pre><code class="language-text">請幫我製作一個「午間閱讀小聚」的單頁活動介紹網頁。
-這是教學練習，所有內容都是虛構的，請在頁面標示「練習用網頁」。
-
-內容包含：活動簡介、三項活動特色、活動時間與地點。
-時間寫「時間待公告」，地點寫「地點待公告」。
-不要加入報名表、登入、個人資料、AI 功能或外部圖片。
-版面簡單、字體清楚，手機也能閱讀。
-
-請使用繁體中文，給我一份完整的 index.html。
-樣式寫在同一個檔案，設定 UTF-8，不依賴外部套件，不需要安裝或編譯。
-從 &lt;!DOCTYPE html&gt; 到 &lt;/html&gt; 全部給我，不要省略程式碼。
-</code></pre>
-<p><strong>拿到回答後：</strong> 存成 <code>index.html</code>，從 Step 2 開始。</p>
-<h3 id="section-27">Prompt 3：我卡在某個 GitHub 畫面，請一次教我一個動作</h3>
-<p><strong>什麼時候用：</strong> 畫面跟教材稍有不同，不知道下一個按鈕在哪裡。</p>
-<pre><code class="language-text">我正在用 GitHub 網頁版，把 index.html 發布到 GitHub Pages。
-這是我自己新建的 Public 練習儲存庫，首頁檔案要放在 main 的最外層。
-我是完全沒有程式背景的新手。
-
-我現在做到：[填入教材 Step 編號]
-畫面標題是：[填入畫面上的標題]
-我看得到的按鈕或選項是：[填入按鈕或選項文字]
-
-請一次只告訴我一個動作，包含「按哪裡」與「按完應該看到什麼」。
-等我回覆完成，再教下一步。
-不要給我指令或要求安裝工具。如果資訊不足，先問我一個必要的問題。
-</code></pre>
-<p><strong>拿到回答後：</strong> 對照自己實際看到的畫面操作。提供畫面資訊時，不要貼出密碼、驗證碼或憑證。</p>
-<h3 id="section-28">Prompt 4：公開網址出現 404</h3>
-<p><strong>什麼時候用：</strong> 已設定 Pages，但網址顯示找不到網頁。</p>
-<pre><code class="language-text">我的 GitHub Pages 網址出現 404。請用新手聽得懂的方式幫我確認。
-
-網站網址：[填入 Visit site 的網址]
-儲存庫是否為 Public：[是／否]
-Code 頁面目前選的分支：[填入]
-檔案清單最外層的檔名：[照畫面填入，保留大小寫]
-Pages 的 Source：[填入]
-Pages 的 Branch：[填入]
-Pages 的 Folder：[填入]
-按 Save 之後等了多久：[填入]
-Actions 最新發布狀態或錯誤文字：[填入；不知道就寫不知道]
-
-請依我提供的資訊找出需要修正的地方，先教我一個最有幫助的動作。
-沒有證據的原因請說尚未確認，不要一次列出大量猜測。
-</code></pre>
-<p><strong>拿到回答後：</strong> 先確認實際檔名、檔案位置與發布狀態，再重新開啟網址。</p>
-<h3 id="section-29">Prompt 5：公開後圖片不見、排版跑掉</h3>
-<p><strong>什麼時候用：</strong> 自己的電腦看起來正常，公開網址卻少了圖片或樣式。</p>
-<pre><code class="language-text">我的網頁在自己電腦可以看，但放到 GitHub Pages 後圖片不見或排版不同。
-網站網址：[填入]
-我實際上傳的檔案與資料夾：[填入，例如 index.html、images/banner.jpg]
-目前異常是：[描述哪張圖片或哪個區塊]
-
-請檢查下面的 HTML，確認圖片與樣式是否指向正確的位置。
-請使用適合專案網址的相對路徑，並核對檔名大小寫。
-不要使用 C:、D:、file:/// 等電腦路徑，也不要把未上傳的檔案當成已存在。
-如果缺少檔案，請清楚告訴我要補上什麼。
-需要修改程式碼時，請給我完整的新版 index.html。
-
-以下是目前的完整 HTML：
-[在這裡貼上 HTML 程式碼]
-</code></pre>
-<p><strong>拿到回答後：</strong> 補上需要的檔案、更新 HTML，再用公開網址查看。</p>
-<h3 id="section-30">Prompt 6：修改已公開網頁的文字</h3>
-<p><strong>什麼時候用：</strong> 想更新活動說明，保留原本的版型。</p>
-<pre><code class="language-text">請修改下面的網頁，只調整我指定的內容：
-[填入，例如：把主標題改成「閱讀小聚活動介紹」]
-
-請保留其他文字、排版與原本可用的功能。
-維持單一 index.html、繁體中文、UTF-8、手機可閱讀。
-不加入外部套件、API 或其他服務。
-請提供完整新版 HTML，不要只給修改片段。
-
-以下是目前的完整 HTML：
-[在這裡貼上 HTML 程式碼]
-</code></pre>
-<p><strong>拿到回答後：</strong> 先在自己的電腦確認，再依「之後怎麼更新網頁」替換 GitHub 上的內容。</p>
-<h3 id="section-31">Prompt 7：公開前，請幫我找出要人工確認的地方</h3>
-<p><strong>什麼時候用：</strong> 即將分享網址，希望多做一次檢查。</p>
-<pre><code class="language-text">請幫我檢查下面準備公開的 HTML。我已先移除不適合提供給 AI 的資料。
-
-請用表格列出：檢查項目、你看到的內容、需要我確認的地方。
-檢查是否有個人資料、密碼或 API Key、電腦檔案路徑、未上傳的圖片、
-錯誤日期、空白連結，以及看起來可以送出但實際無法送出的表單。
-請提醒我哪些按鈕和手機畫面需要實際打開測試。
-你沒有實際測試的項目，請標示「需要人工測試」，不要寫成已通過。
-先列出問題，不要自行修改 HTML。
-
-以下是 HTML：
-[在這裡貼上 HTML 程式碼]
-</code></pre>
-<p><strong>拿到回答後：</strong> 自己核對內容與授權，實際測試；AI 的檢查結果不能代替人工確認。</p>
-<h3 id="section-32">Prompt 8：手機上的字太小、畫面太寬</h3>
-<p><strong>什麼時候用：</strong> 電腦版正常，手機卻需要左右滑動或放大。</p>
-<pre><code class="language-text">請幫我調整下面的 HTML，讓手機也容易閱讀。
-目前手機上的問題是：[填入，例如字太小、內容超出畫面]
-
-請保留原本內容與功能，調整字體、間距、圖片寬度和排版。
-確認有設定手機需要的 viewport，內容盡量避免左右滑動。
-維持單一 index.html、繁體中文、UTF-8，不加入外部套件。
-請給我完整新版 HTML，不要只給修改片段。
-
-以下是目前的完整 HTML：
-[在這裡貼上 HTML 程式碼]
-</code></pre>
-<p><strong>拿到回答後：</strong> 更新公開網頁，再用自己的手機實際看一次。</p>
-<h2 id="section-33">常見問題：先看符合你的那一列</h2>
-<div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
-<thead>
-<tr>
-<th>你遇到的狀況</th>
-<th>先做這件事</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>按過 Save，卻找不到 Visit site</td>
-<td>等幾分鐘，再重新整理 Settings → Pages。</td>
-</tr>
-<tr>
-<td>公開網址顯示 404</td>
-<td>確認最外層有小寫 <code>index.html</code>，Pages 使用 <code>main</code> 和 <code>/(root)</code>，並且發布已完成。</td>
-</tr>
-<tr>
-<td>打開後是 README 的說明文字</td>
-<td>確認 <code>index.html</code> 已存到 <code>main</code> 最外層；若沒有，回到 Step 5 上傳。</td>
-</tr>
-<tr>
-<td>打開後看到一堆程式碼</td>
-<td>檢查完整檔名是否真的是 <code>index.html</code>，並移除誤貼的程式碼框標記；檔案內容只保留 HTML。</td>
-</tr>
-<tr>
-<td>Branch 選單沒有 main</td>
-<td>回到 Code 頁看實際分支名稱，Pages 選同一個名稱。若儲存庫還沒有檔案，先完成初始存檔或上傳。</td>
-</tr>
-<tr>
-<td>找不到 Settings 或 Pages</td>
-<td>確認是在自己的儲存庫，並找頁籤更多選單；使用別人的儲存庫需要管理權限。</td>
-</tr>
-<tr>
-<td>圖片不見了</td>
-<td>確認圖片也有上傳，路徑和檔名大小寫都一致，參考附錄 B。</td>
-</tr>
-<tr>
-<td>更新後還是舊版</td>
-<td>先確認新內容已存到 <code>main</code>、發布已完成，再用無痕視窗或 <code>Ctrl + F5</code> 查看。</td>
-</tr>
-<tr>
-<td>電腦正常，手機畫面很擠</td>
-<td>用 Prompt 8 調整，更新後再用手機看一次。</td>
-</tr>
-<tr>
-<td>AI 回覆只有半段程式碼</td>
-<td>請它先把網頁簡化，再給完整檔案；不要把不完整內容直接發布。</td>
-</tr>
-</tbody></table></div>
-<p>若已等超過 10 分鐘且仍無法開啟，可到儲存庫上方 <strong>Actions</strong>，看最新的 Pages 發布工作是否完成。通常可看到名稱含 <code>pages build and deployment</code> 的項目；若工作失敗，記下錯誤文字交給資訊人員，或填入 Prompt 4。成功狀態通常以綠色勾號顯示。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener noreferrer">發布工作與錯誤查看說明</a></p>
-<h2 id="section-34">附錄 A：把程式碼存成 HTML</h2>
-<p><strong>已經有 <code>index.html</code> 檔案的人，可以跳過。</strong> 這段給目前只有 AI 工具裡的網頁預覽或程式碼的人。</p>
-<h3 id="section-35">A-1：先拿到完整 HTML</h3>
-<ol>
-<li>打開你製作網頁時使用的 AI 工具，回到原本的對話。</li>
-<li>貼上 <strong>Prompt 1</strong>，請 AI 提供完整、可獨立開啟的 HTML。如果使用別的工具或新對話，請一併貼上目前的程式碼。</li>
-<li>在回答中找到 HTML 程式碼，使用程式碼框的複製功能，或用滑鼠選取程式碼後複製。</li>
-</ol>
-<p>如果 AI 只顯示網頁預覽，請再貼上這一句：</p>
-<pre><code class="language-text">請在對話回覆中直接貼出完整的 index.html 程式碼，從 &lt;!DOCTYPE html&gt; 到 &lt;/html&gt;，不要省略，也不要只提供預覽或分享連結。
-</code></pre>
-<p>你要複製的內容通常從 <code>&lt;!DOCTYPE html&gt;</code> 開始，到 <code>&lt;/html&gt;</code> 結束。<strong>只複製程式碼，不要複製外面的說明文字、程式碼框標記或 AI 工具的分享網址。</strong> 取得程式碼後，依下面的記事本步驟存檔即可。</p>
-<h3 id="section-36">A-2：用記事本存檔</h3>
-<ol>
-<li>在桌面建立 <code>my-first-page</code> 資料夾。</li>
-<li>從 Windows 開始選單搜尋並開啟「記事本」。</li>
-<li>把完整 HTML 貼進記事本。</li>
-<li>點「檔案 → 另存新檔」。</li>
-<li>儲存位置選剛建立的 <code>my-first-page</code> 資料夾。</li>
-<li>依下表設定存檔欄位。</li>
-<li>按「儲存」。</li>
-</ol>
-<div class="table-scroll" tabindex="0" role="region" aria-label="可左右捲動的對照表"><table>
-<thead>
-<tr>
-<th>存檔欄位</th>
-<th>要填的內容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>檔案名稱</td>
-<td><code>index.html</code></td>
-</tr>
-<tr>
-<td>存檔類型</td>
-<td>「所有檔案」；有些版本顯示 <code>所有檔案 (*.*)</code>。</td>
-</tr>
-<tr>
-<td>編碼</td>
-<td><code>UTF-8</code></td>
-</tr>
-</tbody></table></div>
-<p><strong>請用記事本存檔。</strong> 存完後，在檔案總管顯示副檔名，確認完整檔名是 <code>index.html</code>，再回到 Step 2。</p>
-<h3 id="section-37">A-3：先用這個小範例練習</h3>
-<p>把下面整段複製到記事本，依 A-2 存檔。這份內容是虛構練習，沒有圖片或外部服務。</p>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-Hant&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
-  &lt;title&gt;我的第一個公開網頁&lt;/title&gt;
-  &lt;style&gt;
-    body {
-      margin: 0;
-      padding: 24px;
-      font-family: system-ui, sans-serif;
-      line-height: 1.8;
-      color: #243b53;
-      background: #eef4f8;
-    }
-    main {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 24px;
-      border-radius: 16px;
-      background: white;
-      overflow-wrap: anywhere;
-    }
-    h1 { font-size: clamp(1.5rem, 5vw, 2rem); }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;main&gt;
-    &lt;h1&gt;我的第一個公開網頁&lt;/h1&gt;
-    &lt;p&gt;這是一份 GitHub Pages 教學練習。&lt;/p&gt;
-    &lt;h2&gt;午間閱讀小聚&lt;/h2&gt;
-    &lt;p&gt;帶一本喜歡的書，一起分享閱讀心得。&lt;/p&gt;
-    &lt;p&gt;時間待公告，地點待公告。&lt;/p&gt;
-    &lt;p&gt;發布測試：第一版&lt;/p&gt;
-  &lt;/main&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>公開成功後，可以把「發布測試：第一版」改成「發布測試：第二版」，練習更新，再用公開網址確認文字已改變。</p>
-<h2 id="section-38">附錄 B：我的網頁還有圖片或其他檔案</h2>
-<p><strong>只有一個 HTML 檔案的人，可以跳過。</strong> 如果你的網頁另外使用圖片、CSS 或 JavaScript，這些被引用的檔案也要一起上傳。</p>
-<p>例如，你的 HTML 裡有這一行：</p>
-<pre><code class="language-html">&lt;img src=&quot;images/banner.jpg&quot; alt=&quot;活動介紹圖片&quot;&gt;
-</code></pre>
-<p>它的意思是：到 <code>images</code> 資料夾找 <code>banner.jpg</code>。GitHub 上就需要保持這個位置：</p>
-<pre><code class="language-text">my-first-page 儲存庫
-├── index.html
-├── README.md
-└── images
-    └── banner.jpg
-</code></pre>
-<p>操作方式：</p>
-<ol>
-<li>在電腦上確認 <code>index.html</code> 旁邊有 <code>images</code> 資料夾，裡面有 <code>banner.jpg</code>。</li>
-<li>回到 GitHub 儲存庫最外層，點 <strong>Add file → Upload files</strong>。</li>
-<li>從檔案總管把 <strong>images 資料夾</strong> 拖進上傳區。</li>
-<li>確認待上傳清單保留 <code>images/banner.jpg</code> 的位置。</li>
-<li>填寫修改說明，直接存到 <code>main</code>，按 <strong>Commit changes</strong>。</li>
-</ol>
-<p>上傳功能可接受檔案或資料夾；請留意選到的層級。<a href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository" target="_blank" rel="noopener noreferrer">GitHub 檔案上傳官方說明</a></p>
-<p>請使用自己有權使用並公開的圖片。<code>banner.jpg</code> 和 <code>Banner.JPG</code> 是不同的檔名；HTML 裡寫的名稱要與上傳檔案一致。</p>
-<p>網頁路徑寫成 <code>images/banner.jpg</code> 或 <code>./images/banner.jpg</code>。以 <code>/images/banner.jpg</code> 開頭會指向網站網域的最外層，對本文含儲存庫名稱的網址，可能找錯位置。<code>C:\...</code>、<code>D:\...</code> 或 <code>file:///...</code> 只指向電腦裡的檔案，別人無法使用。</p>
-<h2 id="section-39">如果暫時不想公開網站</h2>
-<ol>
-<li>到儲存庫的 <strong>Settings → Pages</strong>。</li>
-<li>找到顯示網站網址的區塊，點旁邊的 <strong>Unpublish site</strong>。部分介面會將它放在 <strong>⋯</strong> 選單裡。</li>
-<li>依畫面確認取消發布。</li>
-</ol>
-<p>取消後，目前的網站部署會被移除。原本的發布設定仍會保留；之後更新發布來源、產生新部署時，網站可以重新公開。<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/unpublishing-a-github-pages-site" target="_blank" rel="noopener noreferrer">取消發布官方說明</a></p>
-<p><strong>取消 Pages 發布後，Public 儲存庫裡的檔案仍是公開的。</strong> 如果誤放個資或憑證，請立即通知資訊人員協助處理，不要只刪除網頁上的文字就認為已處理完成。</p>
+</details>
 <a class="back-top" href="#top">↑ 回到最上方</a></article></main>
   </div>
   <footer>內容與介面查核：2026-10-05。GitHub 介面可能調整，請對照英文按鈕名稱。</footer>
@@ -843,6 +358,18 @@ Actions 最新發布狀態或錯誤文字：[填入；不知道就寫不知道]
   <script>
     const announce = document.getElementById('copy-status');
     if (matchMedia('(max-width: 980px)').matches) document.querySelector('.toc details').open = false;
+    // 連到收合內容時，先展開它，讓讀者可以直接看到需要的指令。
+    function revealSection(hash) {
+      const target = document.getElementById(hash.slice(1));
+      if (!target) return;
+      for (let panel = target.closest('details'); panel; panel = panel.parentElement.closest('details')) panel.open = true;
+      return target;
+    }
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', () => revealSection(link.getAttribute('href')));
+    });
+    if (location.hash) revealSection(location.hash)?.scrollIntoView();
+    window.addEventListener('hashchange', () => revealSection(location.hash));
     document.querySelectorAll('article input[type="checkbox"]').forEach((checkbox) => {
       checkbox.disabled = false;
       checkbox.setAttribute('aria-label', checkbox.parentElement.textContent.trim());
@@ -867,7 +394,8 @@ Actions 最新發布狀態或錯誤文字：[填入；不知道就寫不知道]
       button.textContent = '複製這段';
       let heading = pre.previousElementSibling;
       while (heading && !/^H[23]$/.test(heading.tagName)) heading = heading.previousElementSibling;
-      button.setAttribute('aria-label', heading ? '複製：' + heading.textContent : '複製下方完整文字或程式碼');
+      const label = pre.closest('details')?.querySelector('summary') || heading;
+      button.setAttribute('aria-label', label ? '複製：' + label.textContent : '複製下方完整文字或程式碼');
       button.addEventListener('click', () => copyText(code.textContent, button, '複製這段'));
       pre.prepend(button);
     });

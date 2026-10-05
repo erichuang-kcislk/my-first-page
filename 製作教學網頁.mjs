@@ -25,7 +25,7 @@ htmlBody = htmlBody.replace(/<table>/g, '<div class="table-scroll" tabindex="0" 
   .replace(/<a href="(https?:[^\"]+)"/g, '<a href="$1" target="_blank" rel="noopener noreferrer"')
   .replace(/<img /g, '<img loading="lazy" ');
 const firstStep = contents.find((item) => item.label.startsWith('Step 1'));
-const promptSection = contents.find((item) => item.label.startsWith('通用 AI Prompt'));
+const promptSection = contents.find((item) => item.label.startsWith('需要 AI 幫忙'));
 const toc = contents.map((item) => `<a href="#${item.id}">${item.label}</a>`).join('\n');
 
 const page = `<!DOCTYPE html>
@@ -33,7 +33,7 @@ const page = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="給第一次使用 GitHub 的同仁：使用學校 Google 帳號註冊、上傳 HTML、開啟 GitHub Pages，取得公開網址。附逐步截圖與通用 AI Prompt。">
+  <meta name="description" content="已經做好 HTML 網頁？跟著 7 個步驟，用學校 Google 帳號登入 GitHub，上傳檔案並取得公開網址。附操作截圖與可複製的 AI 指令。">
   <meta name="theme-color" content="#14334a">
   <title>把 HTML 變成公開網址｜GitHub Pages 新手教學</title>
   <style>
@@ -69,6 +69,10 @@ const page = `<!DOCTYPE html>
     article > :first-child { margin-top: 0; }
     h2 { color: var(--navy); font-size: clamp(1.3rem, 3vw, 1.65rem); line-height: 1.5; margin: 48px 0 18px; padding-top: 26px; border-top: 1px solid var(--line); }
     h3 { font-size: 1.14rem; color: #25516c; margin: 30px 0 12px; line-height: 1.6; }
+    article details { margin: 18px 0; padding: 14px 18px; border: 1px solid var(--line); border-radius: 8px; background: #fbfcfd; }
+    article summary { color: #25516c; font-weight: 650; line-height: 1.6; cursor: pointer; }
+    article details[open] > summary { margin-bottom: 14px; }
+    article details > :last-child { margin-bottom: 0; }
     p { margin: 14px 0; }
     li { margin: 9px 0; }
     ol, ul { padding-left: 1.65em; }
@@ -99,13 +103,12 @@ const page = `<!DOCTYPE html>
 </head>
 <body id="top">
   <a class="skip" href="#guide">跳到教學內容</a>
-  <div class="masthead"><div class="masthead-inner"><span>GitHub 基礎班 · 新手實作</span><a href="https://github.com/erichuang-kcislk/my-first-page" target="_blank" rel="noopener noreferrer">查看本教學的儲存庫 ↗</a></div></div>
+  <div class="masthead"><div class="masthead-inner"><span>GitHub 基礎班 · 新手實作</span></div></div>
   <header class="hero"><div class="hero-inner">
     <p class="eyebrow">一份 HTML → 一個公開網址</p>
     <h1>把 HTML 變成公開網址<br>GitHub Pages 新手教學</h1>
-    <p>已經用 AI 做出網頁，想讓同仁、朋友或家長用網址開啟？跟著 7 個步驟，完成第一次公開發布。</p>
-    <p>從 GitHub 是什麼、學校 Google 帳號註冊，到上傳檔案與分享網址，每一步都有完成檢查。</p>
-    <div class="hero-actions"><a class="button" href="#${firstStep.id}">開始 Step 1</a><a class="button secondary" href="#${promptSection.id}">找可複製的 AI Prompt</a><button class="button secondary" type="button" id="share-guide">複製教學網址</button></div>
+    <p>跟著下面 7 個步驟，把做好的網頁分享給同仁、朋友或家長。</p>
+    <div class="hero-actions"><a class="button" href="#${firstStep.id}">開始 Step 1</a><a class="button secondary" href="#${promptSection.id}">需要 AI 幫忙</a><button class="button secondary" type="button" id="share-guide">複製教學網址</button></div>
   </div></header>
   <div class="layout">
     <aside class="toc"><details open><summary>教學目錄</summary><nav aria-label="教學章節">${toc}</nav></details></aside>
@@ -116,6 +119,18 @@ const page = `<!DOCTYPE html>
   <script>
     const announce = document.getElementById('copy-status');
     if (matchMedia('(max-width: 980px)').matches) document.querySelector('.toc details').open = false;
+    // 連到收合內容時，先展開它，讓讀者可以直接看到需要的指令。
+    function revealSection(hash) {
+      const target = document.getElementById(hash.slice(1));
+      if (!target) return;
+      for (let panel = target.closest('details'); panel; panel = panel.parentElement.closest('details')) panel.open = true;
+      return target;
+    }
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', () => revealSection(link.getAttribute('href')));
+    });
+    if (location.hash) revealSection(location.hash)?.scrollIntoView();
+    window.addEventListener('hashchange', () => revealSection(location.hash));
     document.querySelectorAll('article input[type="checkbox"]').forEach((checkbox) => {
       checkbox.disabled = false;
       checkbox.setAttribute('aria-label', checkbox.parentElement.textContent.trim());
@@ -140,7 +155,8 @@ const page = `<!DOCTYPE html>
       button.textContent = '複製這段';
       let heading = pre.previousElementSibling;
       while (heading && !/^H[23]$/.test(heading.tagName)) heading = heading.previousElementSibling;
-      button.setAttribute('aria-label', heading ? '複製：' + heading.textContent : '複製下方完整文字或程式碼');
+      const label = pre.closest('details')?.querySelector('summary') || heading;
+      button.setAttribute('aria-label', label ? '複製：' + label.textContent : '複製下方完整文字或程式碼');
       button.addEventListener('click', () => copyText(code.textContent, button, '複製這段'));
       pre.prepend(button);
     });
